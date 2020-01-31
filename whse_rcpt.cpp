@@ -20,6 +20,7 @@ struct Data
 
 void getWareHouseAccess(char *DB_NAME,char *HOST, char *USER, char *PASS, char *TABLE_NAME, char *FILENAME)
 {
+    loggingFunction("getWareHouseAccess");
     strcpy(DB_NAME, "warehouse_receipts");
     strcpy(HOST, "WHSE_01");
     strcpy(USER, "user");
@@ -30,6 +31,7 @@ void getWareHouseAccess(char *DB_NAME,char *HOST, char *USER, char *PASS, char *
 
 int connect2Mysql(MYSQL **mysql, char *HOST, char *USER, char *PASS, char *DB_NAME, char *TABLE_NAME)
 {
+    loggingFunction("connect2Mysql");
     *mysql = mysql_init(NULL);
     mysql_real_connect(*mysql, HOST, USER, PASS, DB_NAME, 0, 0, 0);
     return mysql_errno(*mysql);
@@ -37,6 +39,7 @@ int connect2Mysql(MYSQL **mysql, char *HOST, char *USER, char *PASS, char *DB_NA
 
 void updateDatatoDB(MYSQL *mysql, FILE *myfile, struct Data *d, int i)
 {
+    loggingFunction("updateDatatoDB");
     int j = 0;
     while (j<i)
     {
@@ -50,6 +53,7 @@ void updateDatatoDB(MYSQL *mysql, FILE *myfile, struct Data *d, int i)
 
 int readDataFromFile(FILE *myfile, struct Data *d)
 {
+    loggingFunction("readDataFromFile");
     int i=0;
     size_t s;
     while (myfile)
